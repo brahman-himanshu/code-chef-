@@ -1,0 +1,74 @@
+Two players play a game consisting of 
+N
+N rounds.
+
+In each round, both players receive some points. After every round, the scores obtained so far are added to form the cumulative score of each player.
+
+For example, suppose after two rounds the scores are:
+
+Player 
+1
+1: 
+10
+,
+20
+10,20
+Player 
+2
+2: 
+15
+,
+5
+15,5
+After round 
+2
+2, their cumulative scores are 
+30
+30 and 
+20
+20 respectively. Therefore, Player 
+1
+1 is leading by 
+10
+10 points.
+
+The player with the higher cumulative score after a round is the leader of that round. The lead is the difference between the two cumulative scores.
+
+Among all rounds, find the player who achieved the maximum lead at the end of any round, along with that lead.
+
+It is guaranteed that there will be a unique winner.
+
+
+solution 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int N;
+	cin >> N;
+	
+	int score1 = 0 , score2 = 0 ;
+	int maxLead = 0 ;
+	int winner =0 ;
+	
+	for (int i=0 ; i<N ;i++){
+	    int S,T;
+	    cin >> S >> T ;
+	    score1 += S ;
+	    score2 += T ;
+	    int lead = abs(score1 - score2);
+	    
+	    if (lead > maxLead){
+	        maxLead = lead ;
+	        if(score1>score2)
+	        winner = 1 ;
+	        else
+	        winner = 2;
+	        
+	    }
+	}
+cout<<winner << " " << maxLead ;
+return 0 ; 
+}
